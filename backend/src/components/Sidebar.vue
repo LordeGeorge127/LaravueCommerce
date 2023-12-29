@@ -4,9 +4,9 @@ import {HomeIcon, UsersIcon, ChartBarIcon, ClipboardDocumentListIcon} from "@her
 
 <template>
     <!--Sidebar -->
-    <div class="w-[200px] bg-indigo-700 text-gray-300 py-4 px-2">
+    <div class="w-[250px] bg-indigo-700 text-gray-300 py-5 px-2">
         <router-link :to="{name: 'app.dashboard'}"
-                     class="flex items-center py-2 px-4 rounded transition-colors hover:bg-blue-800 mb-2">
+                     class="flex items-center py-2 px-4 rounded transition-colors hover:bg-blue-800 mb-3">
             <span class="mr-2"><HomeIcon class="w-5"></HomeIcon></span>
             <span class="text-sm">Dashboard</span>
         </router-link>

@@ -1,5 +1,6 @@
 <script setup>
 import Sidebar from "./Sidebar.vue";
+import Navbar from "./Navbar.vue";
 
 const {title} = defineProps({
     title: String
@@ -7,18 +8,18 @@ const {title} = defineProps({
 </script>
 
 <template>
-    <div class="flex min-h-full ">
+    <div class="flex min-h-full bg-gray-200">
         <!--Sidebar -->
         <sidebar></sidebar>
         <!--end of Sidebar -->
-        <div class="flex1">
-            <header class="h-8 shadow bg-white">
-                Header
-            </header>
+        <div class="flex-1">
+           <Navbar></Navbar>
             <!--Content -->
-            <main class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                Dashboard
-                <router-view></router-view>
+            <main class="p-6">
+               <div class="p-4 rounded bg-white">
+                   Dashboard
+                   <router-view></router-view>
+               </div>
             </main>
             <!--end ofSidebar -->
         </div>
