@@ -10,6 +10,11 @@ import {HomeIcon, UsersIcon, ChartBarIcon, ClipboardDocumentListIcon} from "@her
             <span class="mr-2"><HomeIcon class="w-5"></HomeIcon></span>
             <span class="text-sm">Dashboard</span>
         </router-link>
+        <router-link :to="{name: 'app.products'}"
+                     class="flex items-center py-2 px-4 rounded transition-colors hover:bg-blue-800 mb-2">
+            <span class="mr-2"><clipboard-document-list-icon class="w-5"></clipboard-document-list-icon></span>
+            <span class="text-sm">Products</span>
+        </router-link>
         <router-link :to="{name: 'app.dashboard'}"
                      class="flex items-center py-2 px-4 rounded transition-colors hover:bg-blue-800 mb-2">
             <span class="mr-2"><UsersIcon class="w-5"></UsersIcon></span>
@@ -18,11 +23,6 @@ import {HomeIcon, UsersIcon, ChartBarIcon, ClipboardDocumentListIcon} from "@her
         <router-link :to="{name: 'app.dashboard'}"
                      class="flex items-center py-2 px-4 rounded transition-colors hover:bg-blue-800 mb-2">
             <span class="mr-2"><ChartBarIcon class="w-5"></ChartBarIcon></span>
-            <span class="text-sm">Products</span>
-        </router-link>
-        <router-link :to="{name: 'app.dashboard'}"
-                     class="flex items-center py-2 px-4 rounded transition-colors hover:bg-blue-800 mb-2">
-            <span class="mr-2"><ClipboardDocumentListIcon class="w-5"></ClipboardDocumentListIcon></span>
             <span class="text-sm">Reports</span>
         </router-link>
     </div>
