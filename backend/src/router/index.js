@@ -7,6 +7,7 @@ import GuestLayout from "../components/GuestLayout.vue";
 import Products from "../components/Products.vue";
 import AppLayout from "../components/AppLayout.vue";
 import store from "../store/index.js";
+import NotFound from "../components/NotFound.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -53,6 +54,10 @@ const router = createRouter({
             meta:{
                 requiresGuest:true
             }
+        }, {
+            path: '/:notFound(.*)',
+            name: 'notFound',
+            component: NotFound,
         }
 
     ]
