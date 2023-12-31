@@ -4,8 +4,17 @@ import {Bars3Icon} from "@heroicons/vue/24/outline/index.js";
 import {UserIcon, ChevronDoubleLeftIcon} from "@heroicons/vue/24/outline/index.js"
 import {Menu, MenuButton, MenuItems, MenuItem} from '@headlessui/vue'
 import {ChevronDownIcon} from '@heroicons/vue/20/solid'
+import store from "../store/index.js";
+import router from "../router/index.js";
 
 const emit = defineEmits(['toggle-sidebar']);
+
+function logout() {
+    store.dispatch('logout')
+        .then(() => {
+            router.push({name: 'login'})
+        })
+}
 </script>
 
 <template>
@@ -53,8 +62,8 @@ const emit = defineEmits(['toggle-sidebar']);
                             </button>
                         </MenuItem>
                         <MenuItem v-slot="{ active }">
-                            <button
-                                :class="[
+                            <button @click="logout"
+                                    :class="[
                   active ? 'bg-violet-500 text-white' : 'text-gray-900',
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"

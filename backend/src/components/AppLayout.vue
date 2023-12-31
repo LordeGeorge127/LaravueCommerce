@@ -2,6 +2,7 @@
 import Sidebar from "./Sidebar.vue";
 import Navbar from "./Navbar.vue";
 import {onMounted, onUnmounted, ref} from "vue";
+import store from "../store/index.js";
 
 const {title} = defineProps({
     title: String
@@ -12,6 +13,7 @@ const toggleSidebar = function () {
     sidebarOpened.value = !sidebarOpened.value;
 }
 onMounted(()=>{
+    store.dispatch('getUser')
 handleSidebarOpen();
 window.addEventListener("resize", handleSidebarOpen);
 });
