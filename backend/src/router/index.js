@@ -16,6 +16,7 @@ const router = createRouter({
             path: '/app',
             'name': 'app',
             component: AppLayout,
+            alias:'/',
             meta:{
                 requiresAuth:true,
             },

@@ -6,9 +6,12 @@ import {Menu, MenuButton, MenuItems, MenuItem} from '@headlessui/vue'
 import {ChevronDownIcon} from '@heroicons/vue/20/solid'
 import store from "../store/index.js";
 import router from "../router/index.js";
+import {computed} from "vue";
 
 const emit = defineEmits(['toggle-sidebar']);
-
+const currentUser = computed(()=>{
+    return store.state.user.data
+})
 function logout() {
     store.dispatch('logout')
         .then(() => {
@@ -28,7 +31,7 @@ function logout() {
         <Menu as="div" class="relative inline-block text-left">
 
             <MenuButton class="flex items-center mr-4">
-                <small class="p-2">John smith</small>
+                <small class="p-2">{{currentUser.name}}</small>
                 <img src="https://randomuser.me/api/portraits/men/62.jpg" class="rounded-full w-10">
 
             </MenuButton>

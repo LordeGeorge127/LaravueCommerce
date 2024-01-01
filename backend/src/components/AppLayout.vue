@@ -1,11 +1,15 @@
 <script setup>
 import Sidebar from "./Sidebar.vue";
 import Navbar from "./Navbar.vue";
-import {onMounted, onUnmounted, ref} from "vue";
+import {computed, onMounted, onUnmounted, ref} from "vue";
 import store from "../store/index.js";
+import Spinner from "./core/Spinner.vue";
 
 const {title} = defineProps({
     title: String
+})
+const currentUser = computed(()=>{
+    return store.state.user.data;
 })
 const sidebarOpened = ref(true);
 const toggleSidebar = function () {
@@ -26,7 +30,7 @@ function handleSidebarOpen(){
 </script>
 
 <template>
-    <div class="flex min-h-full bg-gray-200">
+    <div v-if="currentUser.id" class="flex min-h-full bg-gray-200">
         <!--Sidebar -->
         <sidebar class="transition-all" :class="{'-ml-[250px]' : !sidebarOpened}"></sidebar>
         <!--end of Sidebar -->
@@ -39,6 +43,9 @@ function handleSidebarOpen(){
             </main>
             <!--end ofSidebar -->
         </div>
+    </div>
+    <div v-else class="min-h-full flex justify-center items-center text-indigo-500 text-3xl py-14">
+        <Spinner/>
     </div>
 </template>
 
