@@ -4,10 +4,10 @@ import Dashboard from "../views/Dashboard.vue";
 import RequestPassword from "../views/RequestPassword.vue";
 import ResetPassword from "../views/ResetPassword.vue";
 import GuestLayout from "../components/GuestLayout.vue";
-import Products from "../components/Products.vue";
 import AppLayout from "../components/AppLayout.vue";
 import store from "../store/index.js";
 import NotFound from "../components/NotFound.vue";
+import Products from "../views/Products/Products.vue";
 
 const router = createRouter({
     history: createWebHistory(),
