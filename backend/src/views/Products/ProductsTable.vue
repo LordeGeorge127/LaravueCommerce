@@ -1,6 +1,6 @@
 <script setup>
 import {Menu, MenuButton, MenuItems, MenuItem} from '@headlessui/vue'
-import {PencilIcon,TrashIcon,EllipsisVerticalIcon} from '@heroicons/vue/24/outline'
+import {PencilIcon, TrashIcon, EllipsisVerticalIcon} from '@heroicons/vue/24/outline'
 import {computed, onMounted, ref} from "vue";
 import TableHeaderCell from "../../components/core/TableHeaderCell.vue";
 import Spinner from "../../components/core/Spinner.vue";
@@ -55,17 +55,19 @@ function getForPage(ev, link) {
     }
     getProducts(link.url)
 }
+
 function deleteProduct(product) {
-    if (!window.confirm('Are you sure you want to delete this product')){
+    if (!window.confirm('Are you sure you want to delete this product')) {
         return;
     }
-    store.dispatch('deleteProduct',product.id)
-        .then(res=>{
+    store.dispatch('deleteProduct', product.id)
+        .then(res => {
             store.dispatch('getProducts')
         })
 }
+
 function editProduct(product) {
-    emit('clickEdit',product);
+    emit('clickEdit', product);
 
 }
 
@@ -73,7 +75,7 @@ function editProduct(product) {
 
 <template>
 
-    <div class="bg-white p-4 rounded-lg shadow">
+    <div class="bg-white p-4 rounded-lg shadow animate-fade-in-down">
         <div class="flex justify-between border-b-2 pb-3">
             <div class="flex items-center">
                 <span class="whitespace-nowrap mr-3">Per page</span>
@@ -115,7 +117,7 @@ function editProduct(product) {
                                    :sort-field="sortField" :sort-direction="sortDirection">Last Updated At
                 </table-header-cell>
                 <table-header-cell @click="" class="border b-2 p-2 text-left" field="Actions"
-                                   >Actions
+                >Actions
                 </table-header-cell>
 
             </tr>
@@ -130,7 +132,10 @@ function editProduct(product) {
 
             </tbody>
             <tbody v-else>
-            <tr v-for="product in products.data">
+            <tr v-for="(product,index) in products.data"
+            >
+                <!--                class="animate-fade-in-down"-->
+                <!--                :style=" {'animation-delay' : `${index * .1}s` } "-->
                 <td class="border-b p-2">{{ product.id }}</td>
                 <td class="border-b p-2">
                     <img class="w-16" :src="product.image_url" :alt="product.title">
@@ -171,7 +176,7 @@ function editProduct(product) {
                                                       active ? 'bg-violet-500 text-white' : 'text-gray-900',
                                                       'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                                                     ]"
-                                        @click="editProduct(product)"
+                                            @click="editProduct(product)"
                                         >
                                             <PencilIcon
                                                 :active="active"
