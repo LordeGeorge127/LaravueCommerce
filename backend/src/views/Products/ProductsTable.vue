@@ -12,7 +12,7 @@ const search = ref('');
 const products = computed(() => store.state.products);
 const sortField = ref('updated_at');
 const sortDirection = ref('desc');
-
+const emit = defineEmits(['clickEdit']);
 onMounted(() => {
     getProducts();
 });
@@ -64,6 +64,11 @@ function deleteProduct(product) {
             store.dispatch('getProducts')
         })
 }
+function editProduct(product) {
+    emit('clickEdit',product);
+
+}
+
 </script>
 
 <template>
@@ -109,6 +114,9 @@ function deleteProduct(product) {
                 <table-header-cell @click="sortProduct" class="border b-2 p-2 text-left" field="updated_at"
                                    :sort-field="sortField" :sort-direction="sortDirection">Last Updated At
                 </table-header-cell>
+                <table-header-cell @click="" class="border b-2 p-2 text-left" field="Actions"
+                                   >Actions
+                </table-header-cell>
 
             </tr>
             </thead>
@@ -125,7 +133,7 @@ function deleteProduct(product) {
             <tr v-for="product in products.data">
                 <td class="border-b p-2">{{ product.id }}</td>
                 <td class="border-b p-2">
-                    <img class="w-16" :src="product.image" :alt="product.title">
+                    <img class="w-16" :src="product.image_url" :alt="product.title">
                 </td>
                 <td class="border-b p-2 max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">
                     {{ product.title }}
@@ -136,10 +144,10 @@ function deleteProduct(product) {
                     <Menu as="div" class="relative inline-block text-left">
                         <div>
                             <MenuButton
-                                class="inline-flex justify-center rounded-md  text-sm font-medium text-white w-10 h-10 bg-black bg-opacity-0  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+                                class="inline-flex justify-center rounded-md  text-md font-medium text-black w-10 h-10 bg-black bg-opacity-0  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
                             >
                                 <EllipsisVerticalIcon
-                                    class="-mr-1 ml-2 h-5 w-5 text-violet-200 hover:text-violet-100"
+                                    class="-mr-1 ml-2 h-5 w-5 text-violet-800 hover:text-violet-900"
                                     aria-hidden="true"
                                 />
                             </MenuButton>
@@ -163,6 +171,7 @@ function deleteProduct(product) {
                                                       active ? 'bg-violet-500 text-white' : 'text-gray-900',
                                                       'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                                                     ]"
+                                        @click="editProduct(product)"
                                         >
                                             <PencilIcon
                                                 :active="active"

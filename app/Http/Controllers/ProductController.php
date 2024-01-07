@@ -78,7 +78,22 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        return new  ProductResource($product->update($request->validated()));
+        $data = $request->validated();
+        $data['updated_by']=$request->user()->id;
+        /** @var UploadedFile $image */
+        $image = $data['image'] ?? null;
+        if ($image){
+            $relativePath = $this->saveImage($image);
+            $data['image'] = URL::to(Storage::url($relativePath));
+            $data['image_mime']= $image->getClientMimeType();
+            $data['image_size']=$image->getSize();
+            //delete old image if there
+            if ($product->image){
+                Storage::deleteDirectory('/public/'.dirname($product->image));
+            }
+        }
+        $product->update($data);
+        return  new ProductResource($product);
     }
 
     /**
