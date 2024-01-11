@@ -60,7 +60,7 @@
                         'hover:bg-indigo-200':loading
                         }"
                 >
-<!--                    <svg class="animate-spin ml-1 mr-3 h-5 w-5 text-white" fill="none"></svg>-->
+                    <svg class="animate-spin ml-1 mr-3 h-5 w-5 text-white" fill="none"></svg>
                     Sign in
                 </button>
             </div>

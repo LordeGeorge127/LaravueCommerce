@@ -31,8 +31,8 @@ function logout() {
         <Menu as="div" class="relative inline-block text-left">
 
             <MenuButton class="flex items-center mr-4">
-                <img src="https://randomuser.me/api/portraits/men/62.jpg" class="rounded-full w-10">
-                <small class="p-2">{{currentUser.name}}</small>
+                <img src="https://randomuser.me/api/portraits/men/62.jpg" class="rounded-full w-10" alt="">
+                <small class="p-2">{{ currentUser.name }}</small>
 
             </MenuButton>
 

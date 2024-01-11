@@ -55,7 +55,8 @@ const router = createRouter({
             meta:{
                 requiresGuest:true
             }
-        }, {
+        },
+        {
             path: '/:notFound(.*)',
             name: 'notFound',
             component: NotFound,
