@@ -13,7 +13,7 @@
             >
 
         </p>
-        <x-input-error :messages="$errors->get('email')" class="mt-2 mb-3" />
+        <x-input-error :messages="$errors->get('email')" class="mt-2 mb-2" />
 
         <div class="mb-4">
             <x-text-input
@@ -21,19 +21,20 @@
                 type="email"
                 name="email"
                 placeholder="Your email address"
+                :value="old('email')"
+                :errors="$errors"
                 class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
             />
+
         </div>
         <div class="mb-4">
             <x-text-input
                 id="loginPassword"
                 type="password"
                 name="password"
-                :value="old('email')"
                 placeholder="Your password"
                 class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
             />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
         </div>
 
