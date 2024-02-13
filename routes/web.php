@@ -14,12 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\ProductController::class,'index'])->name('home');
-Route::get('/product/{product:slug}', [\App\Http\Controllers\ProductController::class,'view'])->name('product.view');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['guestOrVerified'])->group(function (){
+    Route::get('/', [\App\Http\Controllers\ProductController::class,'index'])->name('home');
+    Route::get('/product/{product:slug}', [\App\Http\Controllers\ProductController::class,'view'])->name('product.view');
+
+    Route::prefix('/cart')->name('cart.')->group(function (){
+        Route::get('/',[\App\Http\Controllers\CartController::class,'view'])->name('index');
+        Route::get('/add/{product:slug}',[\App\Http\Controllers\CartController::class,'add'])->name('add');
+        Route::get('/remove/{product:slug}',[\App\Http\Controllers\CartController::class,'remove'])->name('remove');
+        Route::get('/update-quantity/{product:slug}',[\App\Http\Controllers\CartController::class,'updateQuantity'])->name('updateQuantity');
+
+    }) ;
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
