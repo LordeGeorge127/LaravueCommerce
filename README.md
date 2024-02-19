@@ -1,4 +1,9 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+ <h1 align-"center">Laravel Vue Ecommerce </h1>
+
+ ## About Laravel Vue Ecommerce
+This is an Ecommerce web app that utilises php Framework Laravel on the frontend as well as Alpine Js.
+It also features a backend Admin dashboard developed with the progressive Javascript Framework Vue
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -62,3 +67,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## index Page Product Listing 
+![](/resources/gitImage/IndexProd.png)
+## Product Upload Modal
+![](/resources/gitImage/Create.png)
