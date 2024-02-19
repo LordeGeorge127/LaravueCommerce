@@ -43,7 +43,9 @@ class CartController extends Controller
                 $data = [
                     'user_id' => $request->user()->id,
                     'product_id' => $product->id,
-                    'quantity' => $quantity
+                    'quantity' => $quantity,
+                    'created_at'=>today('Africa/Nairobi'),
+
                 ];
                 CartItem::create($data);
             }

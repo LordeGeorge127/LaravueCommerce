@@ -34,7 +34,7 @@
                                 class="w-full flex flex-col sm:flex-row items-center gap-4 flex-1">
                                 <a :href="product.href"
                                    class="w-36 h-38 flex items-center justify-center overflow-hidden">
-                                    <img :src="product.image" class="object-cover" alt=""/>
+                                    <img :src="product.image" class="object-contain" alt=""/>
                                 </a>
                                 <div class="flex flex-col justify-between flex-1">
                                     <div class="flex justify-between mb-3">

@@ -1,35 +1,47 @@
 <x-app-layout>
-    <div class="container mx-auto">
+    <div
+        x-data="productItem({{
+            json_encode([
+
+                        'id' => $product->id,
+                        'image' => $product->image,
+                        'title' => $product->title,
+                        'price' => $product->price,
+                        'addToCartUrl'=>route('cart.add',$product)
+
+                ])
+        }})"
+        class="container mx-auto">
         <div class="grid gap-6 grid-cols-1 lg:grid-cols-5">
             <div class="lg:col-span-3">
                 <div
                     x-data="{
-  images: ['{{$product->image}}'],
-  activeImage: null,
-  prev() {
-      let index = this.images.indexOf(this.activeImage);
-      if (index === 0)
-          index = this.images.length;
-      this.activeImage = this.images[index - 1];
-  },
-  next() {
-      let index = this.images.indexOf(this.activeImage);
-      if (index === this.images.length - 1)
-          index = -1;
-      this.activeImage = this.images[index + 1];
-  },
-  init() {
-      this.activeImage = this.images.length > 0 ? this.images[0] : null
-  }
-}"
+                                  images: ['{{$product->image}}'],
+                                  activeImage: null,
+                                  prev() {
+                                      let index = this.images.indexOf(this.activeImage);
+                                      if (index === 0)
+                                          index = this.images.length;
+                                      this.activeImage = this.images[index - 1];
+                                  },
+                                  next() {
+                                      let index = this.images.indexOf(this.activeImage);
+                                      if (index === this.images.length - 1)
+                                          index = -1;
+                                      this.activeImage = this.images[index + 1];
+                                  },
+                                  init() {
+                                      this.activeImage = this.images.length > 0 ? this.images[0] : null
+                                  }
+                        }"
                 >
                     <div class="relative">
                         <template x-for="image in images">
                             <div
                                 x-show="activeImage === image"
-                                class="aspect-w-3 aspect-h-2"
+                                class="aspect-w-3 aspect-h-2 object-cover"
                             >
-                                <img :src="image" alt="" class="w-auto mx-auto" />
+                                <img :src="image" alt="" class="w-auto mx-auto"/>
                             </div>
                         </template>
                         <a
@@ -90,7 +102,7 @@
             </div>
             <div class="lg:col-span-2">
                 <h1 class="text-lg font-semibold mb-3">
-                  {{$product->title}}
+                    {{$product->title}}
                 </h1>
                 <div class="text-xl font-bold mb-6">${{$product->price}}</div>
                 <div class="flex items-center mb-6">
@@ -150,12 +162,12 @@
                             />
                         </svg>
                     </div>
-{{--                    <a--}}
-{{--                        href="#"--}}
-{{--                        class="ml-3 font-normal text-purple-600 hover:text-purple-500"--}}
-{{--                    >--}}
-{{--                        67 reviews--}}
-{{--                    </a>--}}
+                    {{--                    <a--}}
+                    {{--                        href="#"--}}
+                    {{--                        class="ml-3 font-normal text-purple-600 hover:text-purple-500"--}}
+                    {{--                    >--}}
+                    {{--                        67 reviews--}}
+                    {{--                    </a>--}}
                 </div>
                 <div class="flex items-center justify-between mb-5">
                     <label for="quantity" class="block font-bold mr-4">
@@ -170,7 +182,7 @@
                     />
                 </div>
                 <button
-                    @click="addToCart(id, $refs.quantityEl.value)"
+                    @click="addToCart($refs.quantityEl.value)"
                     class="btn-primary py-4 text-lg flex justify-center min-w-0 w-full mb-6 mt-8"
                 >
                     <svg
@@ -195,7 +207,7 @@
                         x-collapse.min.120px
                         class="text-gray-500 wysiwyg-content"
                     >
-                      {{$product->description}}
+                        {{$product->description}}
                     </div>
                     <p class="text-right">
                         <a
