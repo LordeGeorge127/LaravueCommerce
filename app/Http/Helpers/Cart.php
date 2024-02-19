@@ -30,6 +30,8 @@ class Cart
             return CartItem::where('user_id', $user->id)->get()->map(
                 fn($item) => ['product_id' => $item->product_id, 'quantity' => $item->quantity]
             );
+        }else{
+            return self::getCookieCartItems();
         }
     }
 

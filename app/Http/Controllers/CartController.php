@@ -17,6 +17,11 @@ class CartController extends Controller
         $cartItems = Cart::getCartItems(); //cart items in cookie or db
         $ids = Arr::pluck($cartItems, 'product_id');
         $products = Product::query()->whereIn('id', $ids)->get();
+//        echo '<pre>';
+//        var_dump($products);exit();
+//        echo '</pre>';
+//        dd($products);
+
         $cartItems = Arr::keyBy($cartItems, 'product_id');
         $total = 0;
         foreach ($products as $product) {
