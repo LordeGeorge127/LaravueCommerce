@@ -3,6 +3,8 @@
 namespace App\Http\Helpers;
 
 use App\Models\CartItem;
+use App\Models\Customer;
+use App\Models\User;
 
 class Cart
 {
@@ -47,7 +49,17 @@ class Cart
             $cartItems, fn($carry, $item) => $carry + $item['quantity'], 0
         );
     }
+public static function createCustomerFromExistingUser(){
+    $request = request();
+    $user = $request->user();
 
+    $customer = new Customer();
+    $name = explode(" ",$user->name);
+    $customer->user_id = $user->id;
+    $customer->first_name = $name[0];
+    $customer->last_name = $name[1] ?? '';
+    $customer->save();
+}
     public static function moveCartItemsToDb()
     {
         $request = request();

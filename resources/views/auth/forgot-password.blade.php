@@ -1,9 +1,7 @@
 <x-app-layout>
 
     <form action="{{ route('password.email') }}" method="post" class="w-[400px] mx-auto p-6 my-16">@csrf
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
         <h2 class="text-2xl font-semibold text-center mb-5">
             Enter your Email to reset password
         </h2>
@@ -15,9 +13,12 @@
             >login with existing account</a
             >
         </p>
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')"/>
+{{--        <x-input-error :messages="$errors->get('email')" class="mt-2"/>--}}
 
 
-        <div class="mb-3">
+        <div class="my-3">
             <x-text-input
                 id="loginEmail"
                 type="email"
@@ -34,8 +35,6 @@
             Submit
         </button>
     </form>
-
-
 
 
 </x-app-layout>

@@ -13,6 +13,8 @@
             >
 
         </p>
+        <x-auth-session-status class="mb-4" :status="session('status')"/>
+
         <x-input-error :messages="$errors->get('email')" class="mt-2 mb-2" />
 
         <div class="mb-4">

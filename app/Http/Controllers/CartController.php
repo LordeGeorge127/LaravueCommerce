@@ -54,6 +54,8 @@ class CartController extends Controller
             ]);
         } else {
             $cartItems = json_decode($request->cookie('cart_items', '[]'), true);
+            //or
+//            $cartItems = Cart::getCookieCartItems();
             $productFound = false;
             foreach ($cartItems as &$item) {
                 if ($item['product_id'] === $product->id) {
@@ -105,7 +107,7 @@ class CartController extends Controller
 
     public function updateQuantity(Request $request, Product $product)
     {
-        $quantity = $request->post('quantity');
+        $quantity = (int)$request->post('quantity');
         $user = $request->user();
         if ($user) {
             CartItem::where(['user_id' => $user->id, 'product_id' => $product->id])->update(['quantity' => $quantity]);

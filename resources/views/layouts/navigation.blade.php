@@ -90,7 +90,7 @@
                     >
                         <li>
                             <a
-                                href="/src/profile.html"
+                                href="{{route('profile')}}"
                                 class="flex px-3 py-2 hover:bg-slate-900"
                             >
                                 <svg
@@ -282,7 +282,7 @@
                     >
                         <li>
                             <a
-                                href="/src/profile.html"
+                                href="{{route('profile')}}"
                                 class="flex px-3 py-2 hover:bg-slate-900"
                             >
                                 <svg

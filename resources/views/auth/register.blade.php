@@ -3,7 +3,6 @@
         action="{{ route('register') }}"
         method="post"
         class="w-[400px] mx-auto p-6 my-16"
-
     >
         @csrf
         <h2 class="text-2xl font-semibold text-center mb-4">Create an account</h2>
@@ -20,6 +19,7 @@
                 placeholder="Your name"
                 type="text"
                 name="name"
+                :value="old('name')"
                 class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
 
             />
@@ -35,6 +35,7 @@
                 placeholder="Your Email"
                 type="email"
                 name="email"
+                :value="old('email')"
                 class="border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-purple-500 rounded-md w-full"
 
 
@@ -66,10 +67,10 @@
             />
         </div>
 
-        <button
+        <x-primary-button
             class="btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 w-full"
         >
             Signup
-        </button>
+        </x-primary-button>
     </form>
 </x-app-layout>

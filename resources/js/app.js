@@ -12,19 +12,19 @@ window.Alpine = Alpine;
 
 
 document.addEventListener("alpine:init", () => {
-    Alpine.store("header", {
-        cartItemsObject: Alpine.$persist({}),
-        watchingItems: Alpine.$persist([]),
-        get watchlistItems() {
-            return this.watchingItems.length;
-        },
-        get cartItems() {
-            return Object.values(this.cartItemsObject).reduce(
-                (accum, next) => accum + parseInt(next.quantity),
-                0
-            );
-        },
-    });
+    // Alpine.store("header", {
+    //     cartItemsObject: Alpine.$persist({}),
+    //     watchingItems: Alpine.$persist([]),
+    //     get watchlistItems() {
+    //         return this.watchingItems.length;
+    //     },
+    //     get cartItems() {
+    //         return Object.values(this.cartItemsObject).reduce(
+    //             (accum, next) => accum + parseInt(next.quantity),
+    //             0
+    //         );
+    //     },
+    // });
 
     Alpine.data("toast", () => ({
         visible: false,
@@ -105,7 +105,7 @@ document.addEventListener("alpine:init", () => {
                     .then(result =>{
                         this.$dispatch('cart-change', {count: result.count})
                         this.$dispatch("notify",{
-                            message: "Item Quantity was updated",
+                            message: "The Item Quantity was updated",
                         });
 
                     })
